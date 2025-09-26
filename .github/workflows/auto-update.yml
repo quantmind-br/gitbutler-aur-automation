@@ -109,7 +109,7 @@ jobs:
           git push
 
       - name: Send Discord notification
-        if: steps.check_updates.outputs.updated == 'true' && secrets.DISCORD_WEBHOOK != ''
+        if: steps.check_updates.outputs.updated == 'true' && secrets.DISCORD_WEBHOOK != null
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
@@ -136,7 +136,7 @@ jobs:
 
     steps:
       - name: Notify about failure
-        if: secrets.DISCORD_WEBHOOK != ''
+        if: secrets.DISCORD_WEBHOOK != null
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
