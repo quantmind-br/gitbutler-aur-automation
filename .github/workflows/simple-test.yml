@@ -1,0 +1,21 @@
+name: Simple Test
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test basic functionality
+        run: |
+          echo "✅ GitHub Actions está funcionando!"
+          echo "📅 Data: $(date)"
+          echo "🔐 Secret status:"
+
+          if [ -n "${{ secrets.AUR_SSH_KEY }}" ]; then
+            echo "  ✅ AUR_SSH_KEY configurado"
+          else
+            echo "  ❌ AUR_SSH_KEY não encontrado"
+          fi
