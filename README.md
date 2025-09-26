@@ -37,14 +37,14 @@ After installation:
 
 This package is **automatically updated** via GitHub Actions:
 
-- **🔄 Monitoring**: Checks for new GitButler releases every 6 hours
+- **🔄 Monitoring**: Checks for new GitButler releases every hour
 - **📦 Building**: Validates and tests package before deployment
 - **🚀 Publishing**: Automatically pushes updates to AUR
 - **📊 Logging**: Full execution logs available
 
 ### Automation Status
 
-- **Frequency**: Every 6 hours
+- **Frequency**: Every hour
 - **Last Run**: ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/quantmind-br/gitbutler-aur-automation/auto-update.yml)
 - **Logs**: [View Actions](https://github.com/quantmind-br/gitbutler-aur-automation/actions)
 
