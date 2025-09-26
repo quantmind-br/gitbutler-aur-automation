@@ -1,0 +1,27 @@
+# Environment files
+.env
+.env.local
+
+# Version tracking
+.current_version
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build files
+pkg/
+src/
+*.pkg.tar.*
+*.log
+
+# SSH keys (if accidentally added)
+*.pem
+*.key
+id_*
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
