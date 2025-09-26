@@ -87,6 +87,12 @@ jobs:
             echo "No updates needed"
           fi
 
+      - name: No updates available
+        if: steps.check_updates.outputs.updated == 'false'
+        run: |
+          echo "✅ GitButler is already up to date"
+          echo "Current version matches latest release"
+
       - name: Test SSH connection
         if: steps.check_updates.outputs.updated == 'true'
         run: |
@@ -122,12 +128,17 @@ jobs:
           cd aur-repo
 
           git add PKGBUILD .SRCINFO gitbutler-appimage.install
-          git commit -m "Update GitButler to v${{ steps.check_updates.outputs.version }}
 
-          Automated update via GitHub Actions
-          🤖 Generated automatically"
+          if ! git diff --cached --quiet; then
+            git commit -m "Update GitButler to v${{ steps.check_updates.outputs.version }}
 
-          git push
+            Automated update via GitHub Actions
+            🤖 Generated automatically"
+            git push
+            echo "Changes committed and pushed to AUR"
+          else
+            echo "No changes to commit to AUR"
+          fi
 
       - name: Send Discord notification
         if: steps.check_updates.outputs.updated == 'true' && needs.check-secret.outputs.discord-webhook-exists == 'true'
