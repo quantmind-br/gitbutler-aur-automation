@@ -1,110 +1,84 @@
-# GitButler AppImage AUR Package 🚀
+# GitButler AppImage AUR - Automated Package 🤖
 
 ![AUR Version](https://img.shields.io/aur/version/gitbutler-appimage)
 ![AUR Last Modified](https://img.shields.io/aur/last-modified/gitbutler-appimage)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/USER/gitbutler-aur-automation/auto-update.yml)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/quantmind-br/gitbutler-aur-automation/auto-update.yml)
 
-Este é o pacote AUR automatizado para o GitButler usando AppImage com atualizações automáticas via GitHub Actions.
+Automated AUR package for GitButler using AppImage with GitHub Actions automation.
 
-## Instalação
+## Installation
 
 ```bash
-# Via AUR helper (recomendado)
+# Via AUR helper
 yay -S gitbutler-appimage
 
-# Ou manualmente
+# Or manually
 git clone https://aur.archlinux.org/gitbutler-appimage.git
 cd gitbutler-appimage
 makepkg -si
 ```
 
-## Sobre o Pacote
+## Package Details
 
-- **Nome**: gitbutler-appimage
-- **Versão**: 0.16.7
-- **Tipo**: AppImage
-- **Dependências**: fuse2, gtk3, webkit2gtk
-- **Configuração**: X11 backend habilitado para compatibilidade
+- **Type**: AppImage-based package
+- **Dependencies**: fuse2, gtk3, webkit2gtk
+- **Configuration**: X11 backend enabled for compatibility
+- **Installation**: `/opt/GitButler/gitbutler.AppImage`
+- **Desktop Integration**: Full icon and menu integration
 
-## Uso
+## Usage
 
-Após a instalação:
+After installation:
+- **Menu**: Search for "GitButler"
+- **Terminal**: `gitbutler`
+- **Direct**: `/opt/GitButler/gitbutler.AppImage`
 
-- **Menu de aplicações**: Procure por "GitButler"
-- **Linha de comando**: `gitbutler`
-- **Localização**: `/opt/GitButler/gitbutler.AppImage`
+## Automation
 
-## Automação de Atualizações
+This package is **automatically updated** via GitHub Actions:
 
-Este repositório inclui scripts para automação de atualizações:
+- **🔄 Monitoring**: Checks for new GitButler releases every 6 hours
+- **📦 Building**: Validates and tests package before deployment
+- **🚀 Publishing**: Automatically pushes updates to AUR
+- **📊 Logging**: Full execution logs available
 
-### Configuração Local
+### Automation Status
 
-```bash
-# Configurar notificações (opcional)
-cp .env.example .env
-# Edite .env conforme necessário
+- **Frequency**: Every 6 hours
+- **Last Run**: ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/quantmind-br/gitbutler-aur-automation/auto-update.yml)
+- **Logs**: [View Actions](https://github.com/quantmind-br/gitbutler-aur-automation/actions)
 
-# Configurar automação via crontab
-./setup_automation.sh
+## Repository Structure
+
+```
+├── .github/workflows/
+│   └── auto-update.yml      # Main automation workflow
+├── check_updates.py         # Release monitoring script
+├── notify.py               # Notification system
+├── PKGBUILD                # AUR package definition
+├── .SRCINFO                # AUR metadata
+└── gitbutler-appimage.install  # Installation hooks
 ```
 
-### Uso Manual
+## How It Works
 
-```bash
-# Verificar atualizações
-./auto_update.sh
-
-# Verificar e fazer commit automático
-./auto_update.sh --commit --notify
-```
-
-### Scripts Disponíveis
-
-- `check_updates.py`: Monitora releases do GitHub
-- `auto_update.sh`: Wrapper principal de automação
-- `notify.py`: Sistema de notificações
-- `setup_automation.sh`: Configurador do crontab
-
-## Notificações Suportadas
-
-- Desktop (notify-send)
-- Email (SMTP)
-- Discord (Webhooks)
-- Slack (Webhooks)
-
-## Problemas Conhecidos
-
-Se o GitButler não abrir corretamente:
-
-1. Tente executar: `GDK_BACKEND=x11 gitbutler`
-2. Verifique as dependências: `pacman -Qs fuse2 gtk3 webkit2gtk`
+1. **Monitor**: GitHub Actions checks GitButler releases
+2. **Detect**: Script identifies new versions
+3. **Update**: PKGBUILD and .SRCINFO are updated
+4. **Validate**: Package configuration is tested
+5. **Deploy**: Changes are pushed to AUR
+6. **Notify**: Success/failure notifications sent
 
 ## Links
 
+- **AUR Package**: https://aur.archlinux.org/packages/gitbutler-appimage
 - **Upstream**: https://github.com/gitbutlerapp/gitbutler
-- **Site oficial**: https://gitbutler.com
-- **AUR**: https://aur.archlinux.org/packages/gitbutler-appimage
+- **Official Site**: https://gitbutler.com
+- **Automation Logs**: [GitHub Actions](https://github.com/quantmind-br/gitbutler-aur-automation/actions)
 
-## Automação GitHub Actions
+## Support
 
-Este repositório utiliza GitHub Actions para automação completa:
-
-- **🔄 Verificação automática** a cada 6 horas
-- **📦 Build e teste** antes de publicar
-- **🚀 Deploy automático** para o AUR
-- **🔔 Notificações** Discord/Slack
-- **📊 Logs detalhados** de cada execução
-
-### Status da Automação
-
-- **Última execução**: ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/USER/gitbutler-aur-automation/auto-update.yml)
-- **Frequência**: A cada 6 horas
-- **Logs**: [Ver execuções](https://github.com/USER/gitbutler-aur-automation/actions)
-
-## Contribuição
-
-Para reportar problemas ou sugerir melhorias:
-- **AUR**: Use o sistema de comentários
-- **Automação**: Abra issue neste repositório
-- **Upstream**: https://github.com/gitbutlerapp/gitbutler
+For issues:
+- **Package Problems**: Comment on AUR package
+- **Automation Issues**: Open issue in this repository
+- **GitButler Bugs**: Report to upstream repository
